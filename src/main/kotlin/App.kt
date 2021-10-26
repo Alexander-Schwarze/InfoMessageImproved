@@ -12,6 +12,7 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
@@ -62,7 +63,7 @@ fun App(){
             Text(
                 text = "Here will be the view of both lists",
                 modifier = Modifier
-                    .height(150.dp),
+                    .height(250.dp),
                 color = Color.White
             )
 
@@ -115,24 +116,39 @@ fun App(){
 
             OutlinedTextField(
                 value = textFieldValue.value,
-                enabled = false,
                 onValueChange = { textFieldValue.value = it },
-                label = { Text("CLick \"Start2Add\"") },
-                placeholder = { Text("Possible Games")},
+                label = { Text(
+                    text = "Click \"Start2Add\"",
+                    fontSize = 15.sp
+                ) },
+                placeholder = {
+                    Text(
+                        text = "Possible Games",
+                        fontSize = 30.sp
+                    )},
                 colors = TextFieldDefaults.outlinedTextFieldColors(
                     focusedBorderColor = COLOR_BLUE,
                     unfocusedBorderColor = COLOR_BLUE,
                     focusedLabelColor = COLOR_BLUE,
                     unfocusedLabelColor = COLOR_BLUE,
-                    textColor = Color.White
+                    textColor = Color.White,
+                    backgroundColor = COLOR_DARK_GRAY
                 ),
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(top = 20.dp)
-                    .focusRequester(focusRequester),
-                shape = RectangleShape
+                    .focusRequester(focusRequester)
+                    .height(80.dp),
+                shape = RectangleShape,
+                textStyle = TextStyle(
+                    fontSize = 30.sp,
+                    fontFamily = FontFamily.Monospace
+                )
             )
 
+            val buttonWidth = 190.dp
+            val buttonHeight = 80.dp
+            val fontSize = 30.sp
             Row(
                 modifier = Modifier
                     .padding(top = 20.dp)
@@ -141,11 +157,16 @@ fun App(){
                     onClick = {
 
                     },
+                    modifier = Modifier
+                        .padding(end = 15.dp)
+                        .width(buttonWidth)
+                        .height(buttonHeight),
                     colors = ButtonDefaults.buttonColors(backgroundColor = COLOR_BLUE)
                 ) {
                     Text(
-                        text = "Left",
-                        color = Color.White
+                        text = "Clear",
+                        color = Color.White,
+                        fontSize = fontSize
                     )
                 }
 
@@ -153,25 +174,37 @@ fun App(){
                     onClick = {
 
                     },
+                    modifier = Modifier
+                        .width(buttonWidth)
+                        .height(buttonHeight),
                     colors = ButtonDefaults.buttonColors(backgroundColor = COLOR_BLUE)
                 ) {
                     Text(
-                        text = "Right",
-                        color = Color.White
+                        text = "Start2Add",
+                        color = Color.White,
+                        fontSize = fontSize
                     )
                 }
             }
 
-            Row {
+            Row(
+                modifier = Modifier
+                    .padding(top = 15.dp)
+            ) {
                 Button(
                     onClick = {
 
                     },
+                    modifier = Modifier
+                        .padding(end = 15.dp)
+                        .width(buttonWidth)
+                        .height(buttonHeight),
                     colors = ButtonDefaults.buttonColors(backgroundColor = COLOR_BLUE)
                 ) {
                     Text(
-                        text ="Left",
-                        color = Color.White
+                        text = "Clear All",
+                        color = Color.White,
+                        fontSize = fontSize
                     )
                 }
 
@@ -179,11 +212,15 @@ fun App(){
                     onClick = {
 
                     },
+                    modifier = Modifier
+                        .width(buttonWidth)
+                        .height(buttonHeight),
                     colors = ButtonDefaults.buttonColors(backgroundColor = COLOR_BLUE)
                 ) {
                     Text(
-                        text = "Right",
-                        color = Color.White
+                        text = "Print",
+                        color = Color.White,
+                        fontSize = fontSize
                     )
                 }
             }
